@@ -48,14 +48,14 @@ const httpServer = http.createServer((req, res) => {
                                         if (err) {
                                             console.log(err);
                                         }
-                                        const imgBase64 = data.toString('base64');
+                                        const png = data.toString('base64');
                                         res.writeHead(200, {
                                             'Access-Control-Allow-Origin': '*',
                                             'Access-Control-Allow-Methods': 'POST, OPTIONS',
                                             'Access-Control-Allow-Headers': 'Content-Type',
                                             'Content-Type': 'application/json'
                                         });
-                                        res.end(JSON.stringify({ imgBase64 }));
+                                        res.end(JSON.stringify({ png }));
                                     });
                                     //delete the image
                                     fs.unlink(imgPath, (err) => {
