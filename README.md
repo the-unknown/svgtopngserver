@@ -56,3 +56,5 @@ This is the answer from the server:
    }
 ```   
    
+## Additional Info
+I highly recommend you to use the docker image, as it provides the latest version of imagemagick while using librsvg for conversion. If you are on linux and just use a prebuild version of imagemagick (installed via yum or apt), you will end up with imagemagick using inkscape for conversion. That is problematic as inkscape fails to provide a good conversion for gradients and other effects. Most of the time, the shapes will just appear flat or black. 
