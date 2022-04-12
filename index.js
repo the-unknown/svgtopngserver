@@ -41,7 +41,7 @@ const httpServer = http.createServer((req, res) => {
                             if (size.width > 0) {
                                 const imgName = nanoid(10);
                                 const imgPath = `./images/${imgName}.png`;
-                                gm(imgBuffer).background("none").channel("RGBA").alpha("associate").trim().write(imgPath, (err) => {
+                                gm(imgBuffer).background("none").channel("RGBA").trim().write(imgPath, (err) => {
                                     if (err) {
                                         console.log(err);
                                     }
