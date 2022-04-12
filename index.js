@@ -9,6 +9,7 @@ const http = require('http');
 const fs = require('fs');
 const gm = require('gm').subClass({ imageMagick: true });
 const { nanoid } = require('nanoid');
+const PORT = process.env.PORT || 3300;
 
 const httpServer = http.createServer((req, res) => {
     if (req.method === 'POST') {
@@ -40,7 +41,7 @@ const httpServer = http.createServer((req, res) => {
                             if (size.width > 0) {
                                 const imgName = nanoid(10);
                                 const imgPath = `./images/${imgName}.png`;
-                                gm(imgBuffer).background("none").channel("RGBA").alpha("associate").write(imgPath, (err) => {
+                                gm(imgBuffer).background("none").channel("RGBA").alpha("associate").trim().write(imgPath, (err) => {
                                     if (err) {
                                         console.log(err);
                                     }
@@ -96,6 +97,6 @@ const httpServer = http.createServer((req, res) => {
         }
 });
 
-if (httpServer.listen(3300)) {
-    console.log('Server is listening on port 3300');
+if (httpServer.listen(PORT)) {
+    console.log(`Server is listening on port ${PORT}`);
 }
